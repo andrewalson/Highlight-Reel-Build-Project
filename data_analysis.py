@@ -14,6 +14,8 @@ print(df.info())
 # Calculate and print summary statistics
 print(df.describe())
 
+# ------------------------------------------------------------------------------------------------
+
 # Calculate the derivative of the first column
 derivative = np.diff(df.iloc[:, 1])
 
@@ -35,7 +37,36 @@ ax2.grid(True)
 
 plt.tight_layout()
 plt.savefig('plot.png')
-plt.show()
+# plt.show()
+
+# ------------------------------------------------------------------------------------------------
+
+# Calculate velocity components
+velocity_x = np.gradient(df.iloc[:, 1])
+velocity_y = np.gradient(df.iloc[:, 2])
+velocity_magnitude = np.sqrt(velocity_x**2 + velocity_y**2)
+
+# Plotting
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12), sharex=True)
+
+# Plot velocity
+ax1.plot(df.iloc[:, 0], velocity_magnitude)
+ax1.set_ylabel('Velocity Magnitude')
+ax1.set_title('Ball Velocity vs Frame Number')
+ax1.grid(True)
+
+# Plot derivative of velocity (acceleration)
+ax2.plot(df.iloc[:, 0], np.gradient(velocity_magnitude))
+ax2.set_xlabel('Frame Number')
+ax2.set_ylabel('Acceleration')
+ax2.set_title('Ball Acceleration vs Frame Number')
+ax2.grid(True)
+
+plt.tight_layout()
+plt.savefig('acceleration.png')
+# plt.show()
+
+# ------------------------------------------------------------------------------------------------
 
 # Assignment 1
 # Plotting second column vs frame number
