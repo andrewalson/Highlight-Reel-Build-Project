@@ -17,3 +17,5 @@ Under the guidance of an experienced industry expert, you'll build machine learn
   - Distance profile
   - Proximity to key locations
   - Derived events
+- [ ] Visualize the derived feature data with a graph/animation
+- [ ] Outline why you chose the derived feature and how you think it correlates with what you're interest in extracting from the tracking data
